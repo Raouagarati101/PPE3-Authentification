@@ -42,12 +42,15 @@ pipeline {
             }
         }
       stage('Sonar Publish'){
+	      steps {
+		      script {
 	   withCredentials([string(credentialsId: 'sonarqube', variable: 'sonarToken')]) {
         def sonarToken = "sonar.login=${sonarToken}"
         sh "${mvn} sonar:sonar -D${sonarUrl}  -D${sonarToken}"
 	 }
-      
+		      }
    }
+      }
 
         stage("publish to nexus") {
             steps {
