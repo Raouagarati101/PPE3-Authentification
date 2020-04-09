@@ -45,7 +45,7 @@ pipeline {
           steps {
               script {
         withSonarQubeEnv('Sonar') { 
-          sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:6.4:sonar ' + 
+          sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.1492:sonar ' + 
           '-f all/pom.xml ' +
           '-Dsonar.projectKey=com.huettermann:all:master ' +
           '-Dsonar.login=$SONAR_UN ' +
