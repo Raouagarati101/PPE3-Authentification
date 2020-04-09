@@ -42,10 +42,14 @@ pipeline {
             }
         }
         stage('SonarQube Analysis') {
+            steps {
+                script {
         withSonarQubeEnv('sonarqube') { 
           sh "${mvnHome}/bin/mvn sonar:sonar"
         }
     }
+            }
+        }
 
         stage("publish to nexus") {
             steps {
