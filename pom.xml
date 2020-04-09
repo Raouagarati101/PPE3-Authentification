@@ -139,6 +139,7 @@
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
+                 <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
         </plugins>
     </build>
 
@@ -177,6 +178,16 @@
                     </plugin>
                 </plugins>
             </build>
+                 <profile>
+   <id>sonar</id>
+    <activation>
+        <activeByDefault>true</activeByDefault>
+    </activation>
+     <properties>
+        <sonar.host.url>http://localhost:9000 
+     </sonar.host.url>
+     </properties>
+</profile>
         </profile>
 
         <!-- WebLogic Profile -->
