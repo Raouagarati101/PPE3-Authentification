@@ -41,15 +41,13 @@ pipeline {
                 }
             }
         }
-        stage('SonarQube Analysis') {
-            steps {
-                script {
-        withSonarQubeEnv('sonarqube') { 
-          sh "${mvnHome}/bin/mvn sonar:sonar"
-        }
-    }
-            }
-        }
+      stage('Sonar Publish'){
+	   withCredentials([string(credentialsId: 'sonarqube', variable: 'sonarToken')]) {
+        def sonarToken = "sonar.login=${sonarToken}"
+        sh "${mvn} sonar:sonar -D${sonarUrl}  -D${sonarToken}"
+	 }
+      
+   }
 
         stage("publish to nexus") {
             steps {
