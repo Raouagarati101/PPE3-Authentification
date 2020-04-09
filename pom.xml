@@ -194,7 +194,7 @@
      </sonar.host.url>
                <pluginGroups>
  <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
-</pluginGroups
+              </pluginGroups>
      </properties>
 </profile>
 
