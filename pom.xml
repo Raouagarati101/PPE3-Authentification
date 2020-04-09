@@ -176,8 +176,9 @@
                         </configuration>
                     </plugin>
                 </plugins>
-            </build>
-                 <profile>
+                 </build>
+        </profile>
+             <profile>
    <id>sonar</id>
     <activation>
         <activeByDefault>true</activeByDefault>
@@ -187,7 +188,6 @@
      </sonar.host.url>
      </properties>
 </profile>
-        </profile>
 
         <!-- WebLogic Profile -->
         <profile>
