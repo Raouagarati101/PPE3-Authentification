@@ -46,10 +46,12 @@ pipeline {
           stage("Building SONAR ...") {
     steps {
         script {
-        
-            sh 'mvn clean sonarqube'
+def scannerHome = tool 'SonarQube Scanner 3.3.0.1492';
+withSonarQubeEnv ('sonarqube') {
+bat “${scannerHome}/bin/sonar-scanner”
 }
-             }
+}
+         }
           }
 
         stage("publish to nexus") {
