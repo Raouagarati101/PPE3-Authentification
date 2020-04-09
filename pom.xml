@@ -139,7 +139,6 @@
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
-                 <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
         </plugins>
     </build>
 
