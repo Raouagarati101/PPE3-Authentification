@@ -19,9 +19,7 @@
         <webapp.databaseTempDir>/tmp</webapp.databaseTempDir>
         <webapp.graphTraversalUrl>http://localhost:8080/cargo-tracker/rest/graph-traversal/shortest-path</webapp.graphTraversalUrl>
     </properties>
- <pluginGroups>
- <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
-              </pluginGroups>
+
     <!-- We need to use the PrimeFaces repository -->
     <repositories>
         <repository>
@@ -44,6 +42,9 @@
     <groupId>org.sonarsource.scanner.maven</groupId>
     <artifactId>sonar-maven-plugin</artifactId>
     <version>3.3.0.1492</version>
+                              <pluginGroups>
+ <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
+              </pluginGroups>
 </dependency>
         </dependencies>
     </dependencyManagement>
