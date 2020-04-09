@@ -41,6 +41,12 @@ pipeline {
                 }
             }
         }
+        stage('SonarQube Analysis') {
+        def mvnHome =  tool name: 'apache-maven-3.6.3', type: 'maven'
+        withSonarQubeEnv('sonarqube') { 
+          sh "${mvnHome}/bin/mvn sonar:sonar"
+        }
+    }
 
         stage("publish to nexus") {
             steps {
