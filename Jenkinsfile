@@ -7,8 +7,6 @@ pipeline {
     tools {
         // Note: This should match with the tool name configured in your jenkins instance (JENKINS_URL/configureTools/)
         maven "apache-maven-3.6.3" 
-        scannerHome 'sonar-scanner'
-        
     }
 
     environment {
@@ -44,19 +42,15 @@ pipeline {
             }
         }
         
-      stage('Sonarqube') { 
-    steps { 
-        withSonarQubeEnv ('sonarqube') { 
-            script {
-            sh "${scannerHome}/bin/sonar-scanner" 
-        } 
-        timeout (time: 10, unit: 'MINUTES') { 
-            waitForQualityGate abortPipeline: true 
-        } 
-    } 
-}
-      }
 
+          stage("Building SONAR ...") {
+    steps {
+        script {
+        
+            sh 'mvn clean sonarqube'
+}
+             }
+          }
 
         stage("publish to nexus") {
             steps {
