@@ -41,24 +41,16 @@ pipeline {
                 }
             }
         }
-      stage('SonarQube Analysis') {
-          steps {
-              script {
-        withSonarQubeEnv('Sonar') { 
-          sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.1492:sonar ' + 
-          '-f all/pom.xml ' +
-          '-Dsonar.projectKey=com.huettermann:all:master ' +
-          '-Dsonar.login=$SONAR_UN ' +
-          '-Dsonar.password=$SONAR_PW ' +
-          '-Dsonar.language=java ' +
-          '-Dsonar.sources=. ' +
-          '-Dsonar.tests=. ' +
-          '-Dsonar.test.inclusions=**/*Test*/** ' +
-          '-Dsonar.exclusions=**/*Test*/**'
-        }
+      
+          stage('SonarQube analysis') {
+              steps {
+                  script {
+    withSonarQubeEnv(credentialsId: 'admin', installationName: 'sonarqube') { // You can override the credential to be used
+      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.1492:sonar'
     }
-          }
-      }
+  }
+}
+
         stage("publish to nexus") {
             steps {
                 script {
