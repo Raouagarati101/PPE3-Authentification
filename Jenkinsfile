@@ -41,7 +41,7 @@ pipeline {
                 }
             }
         }
-        environnement { 
+        environment { 
         scannerHome = outil 'SonarQubeScanner' 
     } 
         
