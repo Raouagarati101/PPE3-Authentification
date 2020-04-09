@@ -19,7 +19,9 @@
         <webapp.databaseTempDir>/tmp</webapp.databaseTempDir>
         <webapp.graphTraversalUrl>http://localhost:8080/cargo-tracker/rest/graph-traversal/shortest-path</webapp.graphTraversalUrl>
     </properties>
-
+ <pluginGroups>
+ <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
+              </pluginGroups>
     <!-- We need to use the PrimeFaces repository -->
     <repositories>
         <repository>
@@ -192,9 +194,6 @@
      <properties>
         <sonar.host.url>http://localhost:9000 
      </sonar.host.url>
-               <pluginGroups>
- <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
-              </pluginGroups>
      </properties>
 </profile>
 
