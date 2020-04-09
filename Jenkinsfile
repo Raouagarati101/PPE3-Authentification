@@ -41,7 +41,7 @@ pipeline {
                 }
             }
         }
-      stage ('Sonarqube') { 
+      stage('Sonarqube') { 
     environnement { 
         scannerHome = outil 'SonarQubeScanner' 
     } 
