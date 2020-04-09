@@ -42,9 +42,7 @@
     <groupId>org.sonarsource.scanner.maven</groupId>
     <artifactId>sonar-maven-plugin</artifactId>
     <version>3.3.0.1492</version>
-                              <pluginGroups>
- <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
-              </pluginGroups>
+                             
 </dependency>
         </dependencies>
     </dependencyManagement>
@@ -135,6 +133,7 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                     <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
                 </configuration>
+                     
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
