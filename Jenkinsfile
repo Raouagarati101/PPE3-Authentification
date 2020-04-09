@@ -41,12 +41,13 @@ pipeline {
                 }
             }
         }
-        environment { 
-        scannerHome = outil 'SonarQubeScanner' 
-    } 
         
       stage('Sonarqube') { 
     steps { 
+        environment { 
+        scannerHome = tool 'SonarQubeScanner' 
+    } 
+        
         withSonarQubeEnv ('sonarqube') { 
             script {
             sh "${scannerHome}/bin/sonar-scanner" 
