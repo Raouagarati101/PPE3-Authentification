@@ -109,11 +109,11 @@
              </dependency>
 
     </dependencies>
-
-    <build>
-             <pluginGroups>
+         <pluginGroups>
  <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
 </pluginGroups>
+
+    <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
