@@ -41,16 +41,22 @@ pipeline {
                 }
             }
         }
-      
-          stage('SonarQube analysis') {
-              steps {
-                  script {
-    withSonarQubeEnv(credentialsId: 'admin', installationName: 'sonarqube') { // You can override the credential to be used
-      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.1492:sonar'
-    }
-  }
+      stage ('Sonarqube') { 
+    environnement { 
+        scannerHome = outil 'SonarQubeScanner' 
+    } 
+    steps { 
+        withSonarQubeEnv ('sonarqube') { 
+            script {
+            sh "${scannerHome}/bin/sonar-scanner" 
+        } 
+        timeout (time: 10, unit: 'MINUTES') ) { 
+            waitForQualityGate abortPipeline: true 
+        } 
+    } 
 }
-          }
+      }
+
 
         stage("publish to nexus") {
             steps {
