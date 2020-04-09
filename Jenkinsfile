@@ -44,7 +44,7 @@ pipeline {
       stage('Sonar Publish'){
 	      steps {
 		      script {
-	   withCredentials([string(credentialsId: 'sonarqube', variable: 'sonarToken')]) {
+	   withCredentials([string(credentialsId: 'admin', variable: 'sonarToken')]) {
         def sonarToken = "sonar.login=${sonarToken}"
         sh "${mvn} sonar:sonar -D${sonarUrl}  -D${sonarToken}"
 	 }
