@@ -46,7 +46,7 @@ stage("Building SONAR") {
             def sonarUrl = 'sonar.host.url=http://127.0.0.1:9000'
          def mvnHome =  tool name: 'apache-maven-3.6.3', type: 'maven'
         withSonarQubeEnv('sonarqube') { 
-          sh "sonar:sonar"
+          sh "mvn sonar:sonar"
     }
           }
     }
