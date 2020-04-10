@@ -50,11 +50,10 @@ pipeline {
 //withSonarQubeEnv ('sonarqube') {
 //sh '${scannerHome}/bin/sonar-scanner'
           def sonarUrl = 'sonar.host.url=http://127.0.0.1:9000'
-          withCredentials([string(credentialsId: 'admin', variable: 'sonarToken')]) {
-        def sonarToken = "sonar.login=${sonarToken}"
-        sh "${mvn} sonar:sonar -D${sonarUrl}  -D${sonarToken}"
+         withSonarQubeEnv('sonarqube') { 
+          sh "${mvnHome}/bin/mvn sonar:sonar"
+    }
           }
-        }
     }
           }
 
