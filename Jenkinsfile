@@ -50,7 +50,7 @@ pipeline {
 //withSonarQubeEnv ('sonarqube') {
 //sh '${scannerHome}/bin/sonar-scanner'
        
-          withCredentials([string(credentialsId: 'admin', variable: 'sonarToken')]) {
+          withCredentials([string(credentialsId: 'to log in sonar', variable: 'sonarToken')]) {
         def sonarToken = "sonar.login=${sonarToken}"
         sh "${mvn} sonar:sonar -D${sonarUrl}  -D${sonarToken}"
           }
