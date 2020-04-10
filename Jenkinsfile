@@ -47,11 +47,9 @@ pipeline {
     steps {
         script {
             def sonarUrl = 'sonar.host.url=http://127.0.0.1:9000'
-            
-def scannerHome = tool 'sonar-scanner';
-withSonarQubeEnv ('sonarqube') {
-sh '${scannerHome}/opt/sonar-scanner/bin'
-          
+         def mvnHome =  tool name: 'apache-maven-3.6.3', type: 'maven'
+        withSonarQubeEnv('sonarqube') { 
+          sh "${mvnHome}/bin/mvn sonar:sonar"
     }
           }
     }
