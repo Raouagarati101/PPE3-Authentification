@@ -31,6 +31,17 @@ pipeline {
                 }
             }
         }
+stage("Building SONAR") {
+    steps {
+        script {
+            def sonarUrl = 'sonar.host.url=http://127.0.0.1:9000'
+         def mvnHome =  tool name: 'apache-maven-3.6.3', type: 'maven'
+        withSonarQubeEnv('sonarqube') { 
+          sh "${mvnHome}/bin/mvn sonar:sonar"
+    }
+          }
+    }
+          }
 
         stage("mvn build") {
             steps {
@@ -43,17 +54,7 @@ pipeline {
         }
         
 
-          stage("Building SONAR") {
-    steps {
-        script {
-            def sonarUrl = 'sonar.host.url=http://127.0.0.1:9000'
-         def mvnHome =  tool name: 'apache-maven-3.6.3', type: 'maven'
-        withSonarQubeEnv('sonarqube') { 
-          sh "${mvnHome}/bin/mvn sonar:sonar"
-    }
-          }
-    }
-          }
+          
 
       //  stage("publish to nexus") {
         //    steps {
