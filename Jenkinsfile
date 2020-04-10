@@ -46,10 +46,11 @@ pipeline {
           stage("Building SONAR") {
     steps {
         script {
-def scannerHome = tool 'sonar-scanner';
-withSonarQubeEnv ('sonarqube') {
-sh '${scannerHome}/bin/sonar-scanner'
-}
+//def scannerHome = tool 'sonar-scanner';
+//withSonarQubeEnv ('sonarqube') {
+//sh '${scannerHome}/bin/sonar-scanner'
+            withSonarQubeEnv(credentialsId: 'admin', installationName: 'sonarqube') { // You can override the credential to be used
+      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.1492:sonar'
 }
          }
           }
