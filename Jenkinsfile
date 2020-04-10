@@ -40,19 +40,29 @@ pipeline {
                 }
             }
         }
-stage("Building SONAR") {
-    steps {
-        script {
-            def sonarUrl = 'sonar.host.url=http://127.0.0.1:9000'
-         def mvnHome =  tool name: 'apache-maven-3.6.3', type: 'maven'
-        withSonarQubeEnv('sonarqube') { 
-          sh "mvn sonar:sonar"
-    }
-          }
-    }
-}
+//stage("Building SONAR") {
+  //  steps {
+    //    script {
+      //      def sonarUrl = 'sonar.host.url=http://127.0.0.1:9000'
+         //def mvnHome =  tool name: 'apache-maven-3.6.3', type: 'maven'
+        //withSonarQubeEnv('sonarqube') { 
+          //sh "mvn sonar:sonar"
+  
+        //}
+          //}
+    //}
+//}
         
-
+stage('Code Quality') {
+                   steps {
+                       script {
+                          def scannerHome = tool 'sonar-scanner';
+                          withSonarQubeEnv("sonarqube") {
+                          sh "${tool("sonarqube")}/bin/sonar-scanner"
+                                       }
+                               }
+                           }
+                        }
           
 
       //  stage("publish to nexus") {
