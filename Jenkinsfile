@@ -54,6 +54,7 @@ pipeline {
 }
          }
           }
+          }
 
         stage("publish to nexus") {
             steps {
