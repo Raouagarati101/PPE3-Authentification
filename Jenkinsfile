@@ -58,7 +58,7 @@ stage('Code Quality') {
                        script {
                           def scannerHome = tool 'sonar-scanner';
                           withSonarQubeEnv("sonarqube") {
-                          sh "${tool("sonarqube")}/bin/sonar-scanner"
+                          sh "${tool("sonar-scanner")}/bin/sonar-scanner"
                                        }
                                }
                            }
