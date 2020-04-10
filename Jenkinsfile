@@ -56,6 +56,7 @@ pipeline {
 stage('Code Quality') {
                    steps {
                        script {
+                           credentialsId: 'asmin',
                           def scannerHome = tool 'sonar-scanner';
                           withSonarQubeEnv("sonarqube") {
                           sh "${tool("sonar-scanner")}/bin/sonar-scanner"
